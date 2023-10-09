@@ -1,15 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SingleNavBar extends StatefulWidget {
-  const SingleNavBar({super.key});
-
-  @override
-  State<SingleNavBar> createState() => _SingleNavBarState();
-}
-
-class _SingleNavBarState extends State<SingleNavBar> {
+// ignore: must_be_immutable
+class SingleNavBar extends StatelessWidget {
   String totalPrice = "10.000";
+
+  SingleNavBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
