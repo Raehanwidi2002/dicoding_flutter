@@ -3,14 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SingleItemPage extends StatefulWidget {
-  const SingleItemPage({super.key});
+  const SingleItemPage({Key? key});
 
   @override
   State<SingleItemPage> createState() => _SingleItemPageState();
 }
 
 class _SingleItemPageState extends State<SingleItemPage> {
-  int counter = 1; // Nilai awal
+  int counter = 1; // Initial value
 
   void increment() {
     setState(() {
@@ -32,7 +32,7 @@ class _SingleItemPageState extends State<SingleItemPage> {
       backgroundColor: Color(0xFF232227),
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.only(top: 25, left: 10, right: 15),
+          padding: const EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -59,98 +59,116 @@ class _SingleItemPageState extends State<SingleItemPage> {
                   )
                 ],
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Image.asset(
-                  "images/miAyam/1.png",
-                  height: MediaQuery.of(context).size.height / 2,
-                  fit: BoxFit.contain,
-                ),
-              ),
-              const SizedBox(
+              SizedBox(
                 height: 10,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(right: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "Mie Ayam Ceker",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height / 2,
+                        child: Image.asset(
+                          "images/miAyam/1.png",
+                          fit: BoxFit.contain,
                         ),
-                        Row(
-                          children: [
-                            InkWell(
-                              onTap: decrement,
-                              child: Container(
-                                alignment: Alignment.center,
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(5),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Mie Ayam",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.bold),
                                 ),
-                                child: const Icon(
-                                  Icons.remove,
-                                  size: 20,
-                                ),
+                                Row(
+                                  children: [
+                                    InkWell(
+                                      onTap: decrement,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Icon(
+                                          Icons.remove,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      '$counter',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    InkWell(
+                                      onTap: increment,
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        width: 30,
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                        child: Icon(
+                                          Icons.add,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            constraints: BoxConstraints(
+                                maxWidth:
+                                    MediaQuery.of(context).size.width - 25),
+                            child: Text(
+                              "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida dictum fusce ut placerat.",
+                              style: TextStyle(
+                                color: Colors.white60,
+                                fontSize: 18,
                               ),
+                              textAlign: TextAlign.justify,
                             ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              '$counter',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 8,
-                            ),
-                            InkWell(
-                              onTap: increment,
-                              child: Container(
-                                alignment: Alignment.center,
-                                width: 30,
-                                height: 30,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(5),
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  size: 20,
-                                ),
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
+                          )
+                        ],
+                      )
+                    ],
                   ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  const Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Gravida dictum fusce ut placerat.",
-                    style: TextStyle(
-                      color: Colors.white60,
-                      fontSize: 18,
-                    ),
-                    textAlign: TextAlign.justify,
-                  )
-                ],
-              )
+                ),
+              ),
             ],
           ),
         ),
